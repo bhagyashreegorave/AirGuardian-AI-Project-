@@ -1,0 +1,777 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>AirGuardian AI</title>
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Segoe UI', Arial, sans-serif;
+}
+
+body{
+    background:#f4f9ff;
+    color:#1f2937;
+}
+
+
+/* Header */
+
+header{
+    background:#064e3b;
+    color:white;
+    padding:20px 60px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+}
+
+.logo{
+    font-size:28px;
+    font-weight:bold;
+}
+
+
+nav a{
+    color:white;
+    text-decoration:none;
+    margin:15px;
+    font-size:16px;
+}
+
+
+.nav-btn{
+
+    background:#22c55e;
+    color:white;
+    padding:12px 25px;
+    border:none;
+    border-radius:25px;
+    cursor:pointer;
+
+}
+
+
+
+/* Hero Section */
+
+.hero{
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    gap:70px;
+    padding:80px 50px;
+
+}
+
+
+.hero-text{
+
+    max-width:550px;
+
+}
+
+
+.hero-text h1{
+
+    font-size:52px;
+    color:#064e3b;
+    line-height:1.2;
+
+}
+
+
+.hero-text h2{
+
+    color:#2563eb;
+    font-size:38px;
+    margin:20px 0;
+
+}
+
+
+.hero-text p{
+
+    font-size:19px;
+    line-height:1.7;
+
+}
+
+
+.hero-buttons{
+
+    margin-top:30px;
+
+}
+
+
+.primary-btn{
+
+    background:#16a34a;
+    color:white;
+    border:none;
+    padding:15px 30px;
+    border-radius:30px;
+    cursor:pointer;
+
+}
+
+
+.secondary-btn{
+
+    background:#2563eb;
+    color:white;
+    border:none;
+    padding:15px 30px;
+    border-radius:30px;
+    margin-left:15px;
+    cursor:pointer;
+
+}
+
+
+
+/* AQI Card */
+
+.aqi-card{
+
+    width:350px;
+    background:white;
+    padding:30px;
+    border-radius:20px;
+    box-shadow:0 10px 30px #cccccc;
+
+}
+
+
+.aqi-card h2{
+
+    text-align:center;
+    color:#064e3b;
+
+}
+
+
+.aqi-number{
+
+    text-align:center;
+    font-size:75px;
+    font-weight:bold;
+    color:#dc2626;
+    margin:20px;
+
+}
+
+
+.status{
+
+    text-align:center;
+    color:#dc2626;
+    font-weight:bold;
+
+}
+
+
+.details{
+
+    margin-top:20px;
+    line-height:2;
+
+}
+
+
+.recommendation{
+
+    margin-top:20px;
+    background:#dcfce7;
+    padding:15px;
+    border-radius:10px;
+
+}
+
+
+
+/* Features */
+
+.section-title{
+
+    text-align:center;
+    font-size:36px;
+    color:#064e3b;
+    margin-bottom:40px;
+
+}
+
+
+.features{
+
+    padding:60px;
+
+}
+
+
+.cards{
+
+    display:flex;
+    justify-content:center;
+    gap:25px;
+    flex-wrap:wrap;
+
+}
+
+
+.card{
+
+    width:260px;
+    background:white;
+    padding:25px;
+    text-align:center;
+    border-radius:15px;
+    box-shadow:0 5px 20px #dddddd;
+
+}
+
+
+.card h3{
+
+    color:#2563eb;
+    margin:15px;
+
+}
+
+
+.card p{
+
+    line-height:1.5;
+
+}
+
+
+
+/* Architecture */
+
+.architecture{
+
+    background:#ecfeff;
+    padding:60px;
+    text-align:center;
+
+}
+
+
+.orchestrator{
+
+    width:320px;
+    margin:25px auto;
+    padding:20px;
+    background:#2563eb;
+    color:white;
+    border-radius:15px;
+    font-size:18px;
+
+}
+
+
+.agents{
+
+    display:flex;
+    justify-content:center;
+    flex-wrap:wrap;
+    gap:20px;
+
+}
+
+
+.agent{
+
+    background:#16a34a;
+    color:white;
+    padding:18px;
+    border-radius:12px;
+    width:200px;
+
+}
+
+
+
+/* Workflow */
+
+.workflow{
+
+    padding:60px;
+    text-align:center;
+
+}
+
+
+.flow-box{
+
+    display:flex;
+    justify-content:center;
+    flex-wrap:wrap;
+    gap:20px;
+
+}
+
+
+.flow-item{
+
+    background:white;
+    padding:20px;
+    border-radius:15px;
+    box-shadow:0 5px 20px #ddd;
+
+}
+
+
+
+/* Footer */
+
+footer{
+
+    background:#064e3b;
+    color:white;
+    text-align:center;
+    padding:30px;
+
+}
+
+
+
+/* Responsive */
+
+@media(max-width:900px){
+
+header{
+
+    flex-direction:column;
+    gap:20px;
+
+}
+
+
+.hero{
+
+    flex-direction:column;
+
+}
+
+
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+<script>
+  window.wxOConfiguration = {
+    orchestrationID: "303be9b6f4f448bcab29f89339b2d4c0_2e16c714-aaef-476f-9871-a0747ce2f069",
+    hostURL: "https://au-syd.watson-orchestrate.cloud.ibm.com",
+    rootElementID: "root",
+    deploymentPlatform: "ibmcloud",
+    crn: "crn:v1:bluemix:public:watsonx-orchestrate:au-syd:a/303be9b6f4f448bcab29f89339b2d4c0:2e16c714-aaef-476f-9871-a0747ce2f069::",
+    chatOptions: {
+        agentId: "700c62e4-3d8c-4f1a-90a7-5ef7aca0cc51", 
+    }
+  };
+  setTimeout(function () {
+    const script = document.createElement('script');
+    script.src = `${window.wxOConfiguration.hostURL}/wxochat/wxoLoader.js?embed=true`;
+    script.addEventListener('load', function () {
+        wxoLoader.init();
+    });
+    document.head.appendChild(script);
+  }, 0);                     
+</script>
+<!-- Header -->
+
+<header>
+
+<div class="logo">
+🌿 AirGuardian AI
+</div>
+
+
+<nav>
+
+<a href="#">Home</a>
+<a href="#">AQI Dashboard</a>
+<a href="#">Health Advisor</a>
+<a href="#">Forecast</a>
+<a href="#">Community</a>
+
+</nav>
+
+
+<button class="nav-btn">
+Check AQI
+</button>
+
+
+</header>
+
+
+
+
+<!-- Hero -->
+
+
+<section class="hero">
+
+
+<div class="hero-text">
+
+
+<h1>
+Breathe Smarter.
+<br>
+Live Healthier.
+</h1>
+
+
+<h2>
+AirGuardian AI
+</h2>
+
+
+<p>
+
+An Agentic AI system for Smart Air Quality Management.
+It monitors air pollution, predicts future risks,
+and provides personalized health recommendations
+for safer daily decisions.
+
+</p>
+
+
+<div class="hero-buttons">
+
+
+<button class="primary-btn">
+View Live AQI
+</button>
+
+
+<button class="secondary-btn">
+Get AI Advice
+</button>
+
+
+</div>
+
+
+</div>
+
+
+
+
+
+<div class="aqi-card">
+
+
+<h2>
+Current Air Quality
+</h2>
+
+
+<div class="aqi-number">
+142
+</div>
+
+
+<div class="status">
+
+⚠ Unhealthy for Sensitive Groups
+
+</div>
+
+
+<div class="details">
+
+📍 Pune, India
+<br>
+
+PM2.5 : 78 µg/m³
+<br>
+
+PM10 : 120 µg/m³
+<br>
+
+Temperature : 28°C
+
+</div>
+
+
+
+<div class="recommendation">
+
+<b>AI Recommendation</b>
+
+<br><br>
+
+Avoid prolonged outdoor exercise.
+Children and elderly people should
+limit outdoor exposure.
+
+</div>
+
+
+</div>
+
+
+</section>
+
+
+
+
+
+<!-- Features -->
+
+
+<section class="features">
+
+
+<h1 class="section-title">
+Smart AI Features
+</h1>
+
+
+
+<div class="cards">
+
+
+<div class="card">
+
+🌐
+
+<h3>
+AQI Monitoring
+</h3>
+
+<p>
+Collects real-time air quality data
+from multiple sources.
+</p>
+
+</div>
+
+
+
+<div class="card">
+
+🧠
+
+<h3>
+Agentic AI
+</h3>
+
+<p>
+Multiple AI agents collaborate
+to analyze pollution risks.
+</p>
+
+</div>
+
+
+
+
+<div class="card">
+
+❤️
+
+<h3>
+Health Advisory
+</h3>
+
+<p>
+Provides personalized suggestions
+based on user profile.
+</p>
+
+</div>
+
+
+
+
+<div class="card">
+
+🔮
+
+<h3>
+Prediction Alerts
+</h3>
+
+<p>
+Forecasts future AQI and
+provides early warnings.
+</p>
+
+</div>
+
+
+</div>
+
+
+</section>
+
+
+
+
+
+<!-- Architecture -->
+
+
+<section class="architecture">
+
+
+<h1 class="section-title">
+
+Multi-Agent AI Architecture
+
+</h1>
+
+
+
+<div>
+
+👤 User
+
+</div>
+
+
+
+<div class="orchestrator">
+
+AI Agent Orchestrator
+
+</div>
+
+
+
+<div class="agents">
+
+
+<div class="agent">
+
+AQI Data Agent
+
+</div>
+
+
+<div class="agent">
+
+Health Advisory Agent
+
+</div>
+
+
+<div class="agent">
+
+Forecasting Agent
+
+</div>
+
+
+<div class="agent">
+
+Community Action Agent
+
+</div>
+
+
+</div>
+
+
+</section>
+
+
+
+
+
+<!-- Workflow -->
+
+
+<section class="workflow">
+
+
+<h1 class="section-title">
+
+How AirGuardian Works
+
+</h1>
+
+
+<div class="flow-box">
+
+
+<div class="flow-item">
+
+AQI Data Collection
+
+</div>
+
+
+<div class="flow-item">
+
+AI Analysis
+
+</div>
+
+
+<div class="flow-item">
+
+Risk Prediction
+
+</div>
+
+
+<div class="flow-item">
+
+Personalized Actions
+
+</div>
+
+
+</div>
+
+
+</section>
+
+
+
+
+
+<!-- Footer -->
+
+
+<footer>
+
+
+<h2>
+🌿 AirGuardian AI
+</h2>
+
+
+<p>
+An Intelligent Air Quality Management Platform
+</p>
+
+
+</footer>
+
+
+
+</body>
+
+</html>
